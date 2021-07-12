@@ -1,24 +1,43 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-
+import Header from './Components/Header';
+import Main from './Components/Main';
+import Footer from './Components/Footer'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+// this starter code from my repo (can-of-book)
+
+<Router>
+  <Header/>
+  
+<Switch>
+  <Route exact path="/">
+    {user ? <Main /> : <Register />}
+  </Route>
+  {/* Redirect: this just for path in react-dom */}
+  <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
+ 
+  <Route path="/register">
+    {user ? <Redirect to="/" /> : <Register />}
+  </Route>
+
+  <Route path="/messenger">
+    {!user ? <Redirect to="/" /> : <Messenger />}
+  </Route>
+
+</Switch>
+
+<Footer />
+
+
+</Router>
   );
 }
 
