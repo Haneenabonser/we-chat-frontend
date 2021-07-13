@@ -1,24 +1,43 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+
+} from "react-router-dom";
 import './App.css';
 import Header from './Components/Header';
 import Main from './Components/Main';
 import Footer from './Components/Footer';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import io from 'socket.io-client';
+const SERVER_URL = process.env.SERVER_URL || 'localhost:5000/';
+const socket = io(SERVER_URL, { transports: ['websocket'] });
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route, 
-  Redirect,
 
-} from "react-router-dom";
-let user;
+
 
 function App() {
+
+  // const [socket, setSocket] = React.useState(null);
+
+  // const setupSocket = () => {
+  //   // getting the token from LS
+  //   const token = localStorage.getItem('token');
+  //   if (token && !socket) {
+  //     const newSocket = io('http://localhost:5000', { query: { token: localStorage.getItem('token') } });
+  //     newSocket.on("connection", () => {
+  //       console.log('hellooo');
+  //     })
+  //     setSocket(newSocket);
+  //   }
+  // }
+
+
+
+
   return (
-
-
     // this starter code from my repo (can-of-book)
 
     <Router>
@@ -26,23 +45,19 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          {user ? <Main /> : <Register />}
-        </Route>
-        {/* Redirect: this just for path in react-dom */}
-        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
-
-        <Route path="/register">
-          {user ? <Redirect to="/" /> : <Register />}
+          <Main />
         </Route>
 
-        <Route path="/messenger">
-          {!user ? <Redirect to="/" /> : <Messenger />}
+        <Route exact path="/login">
+          <Login />
+        </Route>
+
+        <Route exact path="/register">
+          <Register />
         </Route>
 
       </Switch>
-
       <Footer />
-
 
     </Router>
   );
