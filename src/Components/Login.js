@@ -18,7 +18,7 @@ export class Login extends Component {
     //         password:e.target.value
     //     })
     // }
-    // //for message
+    
     handleSubmit(e){
         e.preventDefault();
       const data={
