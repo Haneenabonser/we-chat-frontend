@@ -5,7 +5,19 @@ import axios from 'axios';
 export class Main extends Component {
 
     componentDidMount() {
-        axios.get('user')
+        const config ={
+            header :{
+                Authorization: 'Bearer ' + localStorage.getItem('token')  
+             }
+        }
+        axios.get('user').then(
+            res =>{
+                console.log(res);
+            },
+            err =>{
+                console.log(err);
+            }
+        )
     }
     render() {
         return (
