@@ -2,13 +2,16 @@ import React from 'react';
 import './App.css';
 import Header from './Components/Header';
 import Main from './Components/Main';
-import Footer from './Components/Footer'
+import Footer from './Components/Footer';
+import Register from './Components/Register';
+import Login from './Components/Login';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 function App() {
+  
   return (
 
 
