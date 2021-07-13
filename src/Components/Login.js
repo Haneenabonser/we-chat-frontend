@@ -1,37 +1,39 @@
-import React, { Component } from 'react'
-import Auth from '../auth/auth'
+import React, { Component } from 'react';
+import Auth from '../auth/auth';
+
+
 
 export class Login extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state= {
-            username:'',
-            password:'',
-            message:'',
+        this.state = {
+            username: '',
+            password: '',
+            message: '',
         }
     }
 
-    changeUsername(e){
+    changeUsername(e) {
         this.setState({
-            username:e.target.value
+            username: e.target.value
         })
     }
 
-    changePassword(e){
+    changePassword(e) {
         this.setState({
-            password:e.target.value
+            password: e.target.value
         })
     }
     //for message
-    loginHandler(e){
+    loginHandler(e) {
         e.preventDefault();
         this.setState({
-            message:"",
+            message: "",
         })
     }
 
-    Auth.login
+    // Auth.login
     render() {
         return (
             <div>
@@ -43,4 +45,4 @@ export class Login extends Component {
     }
 }
 
-export default Login
+export default Login;
